@@ -1,0 +1,74 @@
+{
+    "places": [
+        {
+            "title": "Kölner Dom",
+            "description": "Berühmter gotischer Dom mit einer riesigen Fassade sowie Führungen und Blick auf den Rhein.",
+            "lat": 50.9416471540563,
+            "long": 6.958634700034458,
+            "img": "/imgs/dom.jpg"
+        },
+        {
+            "title": "Hohenzollernbrücke",
+            "description": "Berühmte Eisenbahn- und Fußgängerbrücke über den Rhein, bekannt für Tausende von Liebesschlössern.",
+            "lat": 50.941588118390705,
+            "long": 6.965677753611408,
+            "img": "/imgs/hohenzoller.jpg"
+        },
+        {
+            "title": "Reiterstandbild Kaiser Wilhelm I.",
+            "description": "",
+            "lat": 50.941182795756184,
+            "long": 6.969495183007903,
+            "img": "/imgs/kaiser.jpg"
+        },
+        {
+            "title": "Kölner Hauptbahnhof",
+            "description": "Umgebauter und modernisierter Bahnhof mit regionalen, nationalen und internationalen Verbindungen.",
+            "lat": 50.94174371783825,
+            "long": 6.958087851463785,
+            "img": "/imgs/central-station.jpg"
+        },
+        {
+            "title": "Gleise des Kölner Hauptbahnhof",
+            "description": "Umgebauter und modernisierter Bahnhof mit regionalen, nationalen und internationalen Verbindungen.",
+            "lat": 50.94247988167406,
+            "long": 6.960219582330148,
+            "img": "/imgs/central-station_2.jpg"
+        },
+        {
+            "title": "Kranhäuser",
+            "description": "Als Kranhäuser wird die architektonische Gesamtheit der drei 61,60 bis 61,91 Meter hohen, 70,20 Meter langen und 33,75 m breiten Hochhäuser im Kölner Rheinauhafen in der Altstadt-Süd bezeichnet.",
+            "lat": 50.93004830627716,
+            "long": 6.964809003041279,
+            "img": "/imgs/harber.jpg"
+        },
+        {
+            "title": "Ladekran",
+            "description": "Sehenswürdigkeit",
+            "lat": 50.91873158600441,
+            "long": 6.970199227137082,
+            "img": "/imgs/load-crane.jpg"
+        },
+        {
+            "title": "Kölner Altstadt",
+            "description": "Die Kölner Altstadt ist ein beliebtes Ziel für Touristen und Kölner.",
+            "lat": 50.93920685893696,
+            "long": 6.960814471952644,
+            "img": "/imgs/old-town.jpg"
+        },
+        {
+            "title": "Rheinufer",
+            "description": "Der Rhein ist ein 1232,7 km langer Strom in West- und Mitteleuropa und eine der verkehrsreichsten Wasserstraßen der Welt.",
+            "lat": 50.92014771843603,
+            "long": 6.974708684835523,
+            "img": "/imgs/rhine.jpg"
+        },
+        {
+            "title": "Uni-Center (Köln)",
+            "description": "Das Uni-Center ist ein Wohnhaus im Kölner Stadtteil Sülz an der Ecke Luxemburger Straße/Universitätsstraße und gehört zu den größten Wohnhäusern Europas.",
+            "lat": 50.92159448457278,
+            "long": 6.933501305468143,
+            "img": "/imgs/skyscraper.jpg"
+        }
+    ]
+}
