@@ -9,7 +9,7 @@ const Game = ({ playerName }) => {
   const navigate = useNavigate();
 
   const [currentLocation, setCurrentLocation] = useState(null);
-  const [markerPosition, setMarkerPosition] = useState({ x: 0, y: 0 });
+  const [markerPosition, setMarkerPosition] = useState({ x: 1, y: 0 });
   const [distance, setDistance] = useState(null);
   const [score, setScore] = useState(0);
   const [currentLocationIndex, setCurrentLocationIndex] = useState(0);
@@ -20,8 +20,8 @@ const Game = ({ playerName }) => {
   };
 
   const calculateDistance = (guess, actual) => {
-    const lat1 = guess.lat || 0;
-    const lon1 = guess.long || 0;
+    const lat1 = guess.x;
+    const lon1 = guess.y;
     const lat2 = actual.lat;
     const lon2 = actual.long;
 
@@ -29,8 +29,8 @@ const Game = ({ playerName }) => {
     const dLat = (lat2 - lat1) * (Math.PI / 180);
     const dLon = (lon2 - lon1) * (Math.PI / 180);
     const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(lat1 * (Math.PI / 180)) *
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * (Math.PI / 180)) *
         Math.cos(lat2 * (Math.PI / 180)) *
         Math.sin(dLon / 2) *
         Math.sin(dLon / 2);
@@ -38,7 +38,8 @@ const Game = ({ playerName }) => {
     const distance = R * c;
 
     return distance;
-  };
+};
+
 
   const calculateScore = (distance) => {
     const maxDistance = 100; // Maximale Entfernung für die volle Punktzahl
@@ -52,8 +53,8 @@ const Game = ({ playerName }) => {
     const rect = document.querySelector('.map-container').getBoundingClientRect();
   
     if (rect) {
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      const x = ((e.latlng.lng - rect.left) / rect.width) * 100;
+      const y = ((e.latlng.lat - rect.top) / rect.height) * 100;
       console.log('x : ' , x , '--' , 'y : ' , y)
       setMarkerPosition({ x, y });
     }
@@ -62,13 +63,13 @@ const Game = ({ playerName }) => {
   const handleConfirm = () => {
     const currentLocation = locationsData.places[currentLocationIndex];
     const calculatedDistance = calculateDistance(markerPosition, currentLocation);
+    console.log(currentLocation , '---', markerPosition)
     const newScore = calculateScore(calculatedDistance);
-
     setDistance(calculatedDistance.toFixed(2));
     setScore(score + newScore);
 
     // Zeige Ergebnisse in der Konsole (zum Testen)
-    console.log('Distance:', calculatedDistance.toFixed(2), 'km');
+    console.log('Distance:', calculatedDistance.toFixed(2), 'm');
     console.log('Score:', newScore);
 
     // Ort direkt ändern, ohne Verzögerung
@@ -101,6 +102,9 @@ const Game = ({ playerName }) => {
               distance={distance}
               score={score}
             />
+            {currentLocation && currentLocation.img && (
+          <img src={currentLocation.img} alt={currentLocation.title} style={{ width: '50%' }} />
+        )}
             <CityMap onMapClick={handleMapClick} markerPosition={markerPosition} />
             <br></br>
             <center>

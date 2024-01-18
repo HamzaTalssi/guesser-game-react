@@ -1,28 +1,30 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const CityMap = ({ markerPosition, onMapClick, currentLocation }) => {
-  React.useEffect(() => {
+  const mapRef = useRef(null);
+
+  useEffect(() => {
     // Initialize the map
-    const map = L.map('map').setView([50.9375, 6.9603], 13);
+    mapRef.current = L.map('map').setView([50.9375, 6.9603], 13);
 
     // Add the tile layer (you can use your preferred tile layer)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapRef.current);
 
     // Check if markerPosition has valid numerical values
     if (!isNaN(markerPosition.x) && !isNaN(markerPosition.y)) {
       // Add a marker to the map
-      L.marker([markerPosition.y, markerPosition.x]).addTo(map);
+      L.marker([markerPosition.y, markerPosition.x]).addTo(mapRef.current);
     }
 
     // Add a click event to the map
-    map.on('click', onMapClick);
+    mapRef.current.on('click', onMapClick);
 
     // Cleanup when the component unmounts
     return () => {
-      map.off('click', onMapClick);
-      map.remove();
+      mapRef.current.off('click', onMapClick);
+      mapRef.current.remove();
     };
   }, [markerPosition, onMapClick]);
 
